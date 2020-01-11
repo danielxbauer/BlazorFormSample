@@ -1,0 +1,22 @@
+﻿<AppFormGroup Label="Email">
+    <AppInputText @bind-Value="Register.Email" />
+    <AppValidationMessage For="@(() => Register.Email)" />
+</AppFormGroup>
+
+<AppFormGroup Label="Password">
+    <AppInputText @bind-Value="Register.Password" disabled="@(Register.Email == "seas")" />
+    <AppValidationMessage For="@(() => Register.Password)" />
+</AppFormGroup>
+
+@if (Register.Password == "Daniel")
+{
+    <AppFormGroup Label="ConfirmPassword">
+        <AppInputText @bind-Value="Register.ConfirmPassword" />
+        <AppValidationMessage For="@(() => Register.ConfirmPassword)" />
+    </AppFormGroup>
+}
+
+@code {
+    [Parameter] public Register Register { get; set; }
+}
+

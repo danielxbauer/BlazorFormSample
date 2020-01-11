@@ -1,0 +1,8 @@
+﻿<AppFormGroup Label="StreetName">
+    <AppInputText @bind-Value="Address.StreetName" />
+    <AppValidationMessage For="@(() => Address.StreetName)" />
+</AppFormGroup>
+
+@code {
+    [Parameter] public Address Address { get; set; }
+}

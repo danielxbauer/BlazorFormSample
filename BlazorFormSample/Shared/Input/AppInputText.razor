@@ -1,0 +1,24 @@
+﻿@inherits InputText
+
+<input @attributes="AdditionalAttributes"
+       class="form-control @CssClass"
+       value="@CurrentValue"
+       @oninput="EventCallback.Factory.CreateBinder<string>(
+        this, __value => CurrentValueAsString = __value, CurrentValueAsString)" />
+
+@code {
+    protected new string CssClass
+    {
+        get
+        {
+            if (AdditionalAttributes != null &&
+                AdditionalAttributes.TryGetValue("class", out var @class) &&
+                !string.IsNullOrEmpty(Convert.ToString(@class)))
+            {
+                return $"{@class} {EditContext.BootstrapFieldCssClass(FieldIdentifier)}";
+            }
+
+            return EditContext.BootstrapFieldCssClass(FieldIdentifier); // Never null or empty
+        }
+    }
+}

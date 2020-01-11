@@ -1,0 +1,15 @@
+﻿<AppFormGroup Label="FirstName">
+    <AppInputText @bind-Value="Person.FirstName" />
+    <AppValidationMessage For="@(() => Person.FirstName)" />
+</AppFormGroup>
+
+<AppFormGroup Label="LastName">
+    <AppInputText @bind-Value="Person.LastName" />
+    <AppValidationMessage For="@(() => Person.LastName)" />
+</AppFormGroup>
+
+<AddressForm Address="Person.Address" />
+
+@code {
+    [Parameter] public Person Person { get; set; }
+}
